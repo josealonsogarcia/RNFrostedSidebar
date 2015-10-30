@@ -63,7 +63,22 @@
 						@"profile",
 						@"star"
 						];
-    RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:self.optionIndices borderColors:colors labelStrings:labels];
+    
+    NSArray* badges = @[@"",
+                        @"1",
+                        @"2",
+                        @"3",
+                        @"4",
+                        @"5",
+                        @"6",
+                        @"7",
+                        @"8",
+                        @"9",
+                        @"10",
+                        @"11"
+                        ];
+
+    RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:self.optionIndices borderColors:colors labelStrings:labels badgeStrings:badges];
 //    RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:self.optionIndices borderColors:colors];
 //    RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images];
 	

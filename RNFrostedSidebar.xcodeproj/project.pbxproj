@@ -34,6 +34,7 @@
 		8681BB5917BAFB5A007F1B43 /* RNFrostedSidebar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8681BB5817BAFB5A007F1B43 /* RNFrostedSidebar.m */; };
 		86D2CBF917CEAFE50098397C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 862D1B2317BC2C9B00157004 /* QuartzCore.framework */; };
 		86D2CBFA17CEAFE90098397C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 862D1B2517BC2CA000157004 /* Accelerate.framework */; };
+		A3AA678D1BE380C300E38FF6 /* BadgeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AA678C1BE380C300E38FF6 /* BadgeLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,8 @@
 		8646017917BAF99800FCE7F4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		8681BB5717BAFB5A007F1B43 /* RNFrostedSidebar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNFrostedSidebar.h; sourceTree = "<group>"; };
 		8681BB5817BAFB5A007F1B43 /* RNFrostedSidebar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNFrostedSidebar.m; sourceTree = "<group>"; };
+		A3AA678B1BE380C300E38FF6 /* BadgeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeLabel.h; sourceTree = "<group>"; };
+		A3AA678C1BE380C300E38FF6 /* BadgeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +130,8 @@
 				86251D3917C3DE9E00837EBD /* example */,
 				8646015F17BAF99800FCE7F4 /* Frameworks */,
 				8646015E17BAF99800FCE7F4 /* Products */,
+				A3AA678B1BE380C300E38FF6 /* BadgeLabel.h */,
+				A3AA678C1BE380C300E38FF6 /* BadgeLabel.m */,
 				8681BB5717BAFB5A007F1B43 /* RNFrostedSidebar.h */,
 				8681BB5817BAFB5A007F1B43 /* RNFrostedSidebar.m */,
 			);
@@ -236,6 +241,7 @@
 				86251D5F17C3DE9E00837EBD /* main.m in Sources */,
 				8681BB5917BAFB5A007F1B43 /* RNFrostedSidebar.m in Sources */,
 				86251D6817C3DE9E00837EBD /* ViewController.m in Sources */,
+				A3AA678D1BE380C300E38FF6 /* BadgeLabel.m in Sources */,
 				86251D6417C3DE9E00837EBD /* RNAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

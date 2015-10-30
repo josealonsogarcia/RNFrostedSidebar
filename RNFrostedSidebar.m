@@ -10,6 +10,7 @@
 
 #import "RNFrostedSidebar.h"
 #import <QuartzCore/QuartzCore.h>
+#import "BadgeLabel.h"
 
 NSString *const RNFrostedLabelFont = @"RNFrostedLabelFont";
 NSString *const RNFrostedLabelColor = @"RNFrostedLabelColor";
@@ -245,6 +246,7 @@ NSString *const RNFrostedLabelColor = @"RNFrostedLabelColor";
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 @property (nonatomic, strong) NSArray *images;
 @property (nonatomic, strong) NSMutableArray *labels;
+@property (nonatomic, strong) NSMutableArray *badges;
 @property (nonatomic, strong) NSArray *borderColors;
 @property (nonatomic, strong) NSMutableArray *itemViews;
 @property (nonatomic, strong) NSMutableIndexSet *selectedIndices;
@@ -259,7 +261,7 @@ static RNFrostedSidebar *rn_frostedMenu;
     return rn_frostedMenu;
 }
 
-- (instancetype)initWithImages:(NSArray *)images selectedIndices:(NSIndexSet *)selectedIndices borderColors:(NSArray *)colors labelStrings:(NSArray*)labels
+- (instancetype)initWithImages:(NSArray *)images selectedIndices:(NSIndexSet *)selectedIndices borderColors:(NSArray *)colors labelStrings:(NSArray*)labels badgeStrings:(NSArray *) badges
 {
     if (self = [super init]) {
         _isSingleSelect = NO;
@@ -277,6 +279,7 @@ static RNFrostedSidebar *rn_frostedMenu;
         _itemViews = [NSMutableArray array];
         _tintColor = [UIColor colorWithWhite:0.2 alpha:0.73];
 		_labels = [@[] mutableCopy];
+        _badges = [@[] mutableCopy];
         _borderWidth = 2;
         _itemBackgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.25];
         
@@ -299,7 +302,9 @@ static RNFrostedSidebar *rn_frostedMenu;
             view.imageView.image = image;
 
             [_contentView addSubview:view];
-
+            
+            
+            
             [_itemViews addObject:view];
 			
 			if (labels) {
@@ -310,8 +315,20 @@ static RNFrostedSidebar *rn_frostedMenu;
 				label.backgroundColor = [UIColor clearColor];
 				label.textAlignment = NSTextAlignmentCenter;
 				[_labels addObject:label];
-				[_contentView addSubview:label];				
+				[_contentView addSubview:label];
 			}
+            
+            if (badges) {
+                BadgeLabel *badge = [[BadgeLabel alloc] init];
+                badge.text = badges[idx];
+                
+                badge.backgroundColor = [UIColor redColor];
+                badge.hasBorder = NO;
+                badge.hasGloss = NO;
+                badge.textAlignment = NSTextAlignmentCenter;
+                [_badges addObject:badge];
+                [_contentView addSubview:badge];
+            }
             
             if (_borderColors && _selectedIndices && [_selectedIndices containsIndex:idx]) {
                 UIColor *color = _borderColors[idx];
@@ -326,7 +343,7 @@ static RNFrostedSidebar *rn_frostedMenu;
 }
 
 - (instancetype)initWithImages:(NSArray *)images selectedIndices:(NSIndexSet *)selectedIndices borderColors:(NSArray *)colors {
-	return [self initWithImages:images selectedIndices:selectedIndices borderColors:colors labelStrings:nil];
+	return [self initWithImages:images selectedIndices:selectedIndices borderColors:colors labelStrings:nil badgeStrings:nil];
 }
 
 - (instancetype)initWithImages:(NSArray *)images selectedIndices:(NSIndexSet *)selectedIndices {
@@ -653,6 +670,11 @@ static RNFrostedSidebar *rn_frostedMenu;
 	[self.labels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
         CGRect frame = CGRectMake(0, topPadding*idx + self.itemSize.height*(idx+1) + topPadding, self.width, 24);
         label.frame = frame;
+    }];
+    
+    [self.badges enumerateObjectsUsingBlock:^(UILabel *badge, NSUInteger idx, BOOL * _Nonnull stop) {
+        CGRect frame = CGRectMake(self.itemSize.width + leftPadding , topPadding*idx + self.itemSize.height*idx + topPadding, badge.frame.size.width + 5, badge.frame.size.height);
+        badge.frame = frame;
     }];
 	
     NSInteger items = [self.itemViews count];
